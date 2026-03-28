@@ -1,0 +1,22 @@
+bundle:
+  packet_id: 'WP-002'
+  run_id: 'RUN-000'
+  owner: 'codex'
+  status: 'queued'
+  phase: 'architecture'
+  updated_at: '2026-03-28T22:18:25Z'
+  paths:
+    research_note: 'team/reports/WP-002-research.md'
+    design_brief: 'team/reports/WP-002-design.md'
+    verification_report: 'team/reports/WP-002-verification.md'
+    review_report: 'team/reports/WP-002-review.md'
+    security_review: ''
+    performance_note: ''
+    ui_spec: ''
+    docs_delta: ''
+  handoff:
+    next_gate: 'ready-for-kickoff'
+    reviewer: 'codex'
+    verdict: 'pending'
+  notes:
+    - 'Promoted packet bundle awaiting kickoff.'

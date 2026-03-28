@@ -1,8 +1,8 @@
 resume:
   target_actor: 'codex'
-  packet_id: 'WP-001'
+  packet_id: 'WP-002'
   run_id: 'RUN-000'
-  phase: 'intake'
+  phase: 'architecture'
   next_gate: 'ready-for-kickoff'
   action: 'inspect_repo_state'
   required_reads:
@@ -17,9 +17,11 @@ resume:
     - 'team/run-state/run-ledger.jsonl'
     - 'team/session-state/active-handoff.md'
   expected_outputs:
-    - 'team/reports/WP-001-bundle.yaml'
+    - 'docs/architecture.md'
+    - 'team/contracts/design-brief.template.md'
+    - 'docs/security.md'
     - 'team/session-state/active-handoff.md'
-  last_updated: 'YYYY-MM-DDTHH:MM:SSZ'
+  last_updated: '2026-03-28T22:18:25Z'
   notes:
-    - 'This file is a runner-to-session envelope, not a replacement for backlog or run-state files.'
-    - 'Future runner adapters should rewrite this file when they change actor, packet, or action.'
+    - 'Closeout rebuilt the runner resume envelope for the promoted packet.'
+    - 'Inspect repo state before the next kickoff so backlog remains authoritative.'

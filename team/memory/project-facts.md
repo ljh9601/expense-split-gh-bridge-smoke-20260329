@@ -117,3 +117,11 @@
 - Generated projects must preserve Codex as control plane and Claude as execution plane.
 - Replace placeholder quality-gate commands before relying on unattended execution.
 - Respect explicit non-goals and constraints unless a later architecture decision changes them.
+
+## WP-001 Research Findings
+
+- Use `decimal.Decimal` with string-based parsing for all money values and define one explicit rounding rule before implementation starts.
+- Treat CLI arguments and JSON payloads as untrusted input. Apply allowlist validation, bounded sizes, and clear rejection paths for malformed data.
+- Keep file input narrow in milestone one: regular local JSON files only, no symlink-following workflow, no user-controlled output paths.
+- Preserve the accounting invariant that the final normalized settlement nets to zero after rounding.
+- Carry the remaining open questions on rounding policy and duplicate-participant handling into `WP-002`.

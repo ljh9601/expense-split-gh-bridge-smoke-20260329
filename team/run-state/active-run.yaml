@@ -1,14 +1,14 @@
 run:
   run_id: 'RUN-000'
-  packet_id: 'WP-001'
-  phase: 'intake'
+  packet_id: 'WP-002'
+  phase: 'architecture'
   status: 'ready'
   attempt: 0
   current_actor: 'codex'
-  report_bundle_path: 'team/reports/WP-001-bundle.yaml'
+  report_bundle_path: 'team/reports/WP-002-bundle.yaml'
   latest_handoff_path: 'team/session-state/active-handoff.md'
   latest_verification_report: ''
   latest_review_report: ''
-  last_updated: 'YYYY-MM-DDTHH:MM:SSZ'
+  last_updated: '2026-03-28T22:18:25Z'
   notes:
-    - 'Replace placeholder values when the first real execution cycle starts.'
+    - 'Active packet pointer awaiting kickoff.'
