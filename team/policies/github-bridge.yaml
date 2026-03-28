@@ -1,6 +1,6 @@
 github_bridge:
-  enabled: false
-  repository: ''
+  enabled: true
+  repository: 'ljh9601/expense-split-gh-bridge-smoke-20260329'
   remote_name: 'origin'
   base_branch: 'main'
   require_distinct_accounts: true
