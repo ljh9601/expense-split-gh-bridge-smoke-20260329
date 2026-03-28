@@ -1,0 +1,16 @@
+# Copy to runner-env.local for unattended local runs when the background runner
+# needs a deterministic environment that differs from your interactive shell.
+#
+# Keep runner-env.local out of version control. Common uses:
+# - API-key auth for Codex or Claude when login state is not visible in background services
+# - explicit PATH or HOME for launchd or systemd user services
+# - user-specific config roots such as XDG_CONFIG_HOME or CLAUDE_CONFIG_DIR
+#
+# OPENAI_API_KEY=replace-me-if-needed
+# ANTHROPIC_API_KEY=replace-me-if-needed
+# HOME=/Users/your-user
+# PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+# XDG_CONFIG_HOME=/Users/your-user/.config
+# NVM_DIR=/Users/your-user/.nvm
+# Avoid setting CLAUDE_CONFIG_DIR unless you intentionally use a non-default Claude config root
+# and have verified `claude auth status` still works with that override.

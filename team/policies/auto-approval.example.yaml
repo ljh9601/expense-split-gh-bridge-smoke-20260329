@@ -1,0 +1,21 @@
+allowed_without_human:
+  - repo_local_read_search
+  - repo_local_edit
+  - formatters
+  - lint
+  - typecheck
+  - unit_tests
+  - integration_tests
+  - non_destructive_git_status_diff_add_commit
+
+require_human_approval:
+  - destructive_file_operations
+  - production_side_effects
+  - paid_resource_usage
+  - new_external_authentication
+  - secret_creation_or_rotation
+  - deployment
+  - schema_or_data_migration_in_live_environment
+
+notes:
+  - Replace these defaults with repo-specific unattended execution policy.

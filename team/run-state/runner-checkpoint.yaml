@@ -1,0 +1,16 @@
+checkpoint:
+  runner_id: ''
+  status: 'idle'
+  active_packet_id: 'WP-001'
+  active_run_id: 'RUN-000'
+  phase: 'intake'
+  next_action: 'inspect_repo_state'
+  next_gate: 'ready-for-kickoff'
+  target_actor: 'codex'
+  awaiting_approval: false
+  approval_reason: ''
+  resume_file: 'team/session-state/runner-resume.yaml'
+  last_updated: 'YYYY-MM-DDTHH:MM:SSZ'
+  notes:
+    - 'External runners should treat backlog, active-run, and run-ledger files as the source of truth.'
+    - 'Update this checkpoint only after a successful kickoff, closeout, or explicit pause transition.'

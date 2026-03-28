@@ -1,0 +1,14 @@
+run:
+  run_id: 'RUN-000'
+  packet_id: 'WP-001'
+  phase: 'intake'
+  status: 'ready'
+  attempt: 0
+  current_actor: 'codex'
+  report_bundle_path: 'team/reports/WP-001-bundle.yaml'
+  latest_handoff_path: 'team/session-state/active-handoff.md'
+  latest_verification_report: ''
+  latest_review_report: ''
+  last_updated: 'YYYY-MM-DDTHH:MM:SSZ'
+  notes:
+    - 'Replace placeholder values when the first real execution cycle starts.'

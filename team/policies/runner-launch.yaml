@@ -1,0 +1,15 @@
+# Actor-specific launcher commands for the outer runner.
+# Generated launcher wrappers live under team/run-state/launchers/ when scaffolded locally.
+# Required placeholders:
+# - codex profiles should include {prompt_file}
+# - claude profiles should include {resume_file} and {prompt_file}
+
+codex:
+
+claude:
+
+notes:
+  - 'No actor-specific launch profiles are configured yet.'
+  - 'Run `runner-launch-scaffold --preset local-batch --overwrite` for personal local automation.'
+  - 'Run `runner-launch-scaffold --preset rehearsal-fake --overwrite` for deterministic unattended rehearsal.'
+  - 'Use `team/policies/runner-env.local` for deterministic detached-run PATH or auth setup when interactive shell state is not visible to the runner.'

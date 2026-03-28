@@ -1,0 +1,22 @@
+bundle:
+  packet_id: 'WP-000'
+  run_id: 'RUN-000'
+  owner: 'claude'
+  status: 'draft'
+  phase: 'implementation'
+  updated_at: 'YYYY-MM-DDTHH:MM:SSZ'
+  paths:
+    research_note: 'team/reports/WP-000-research.md'
+    design_brief: 'team/reports/WP-000-design.md'
+    verification_report: 'team/reports/WP-000-verification.md'
+    review_report: 'team/reports/WP-000-review.md'
+    security_review: ''
+    performance_note: ''
+    ui_spec: ''
+    docs_delta: ''
+  handoff:
+    next_gate: 'ready-for-codex-review'
+    reviewer: 'codex'
+    verdict: 'pending'
+  notes:
+    - 'Record the canonical artifact paths for this packet cycle here.'

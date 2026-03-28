@@ -1,0 +1,25 @@
+resume:
+  target_actor: 'codex'
+  packet_id: 'WP-000'
+  run_id: 'RUN-000'
+  phase: 'architecture'
+  next_gate: 'ready-for-kickoff'
+  action: 'inspect_repo_state'
+  required_reads:
+    - 'AGENTS.md'
+    - 'team/backlog/active.yaml'
+    - 'team/memory/project-facts.md'
+    - 'team/session-state/active-handoff.md'
+    - 'team/run-state/active-run.yaml'
+  source_of_truth_files:
+    - 'team/backlog/active.yaml'
+    - 'team/run-state/active-run.yaml'
+    - 'team/run-state/run-ledger.jsonl'
+    - 'team/session-state/active-handoff.md'
+  expected_outputs:
+    - 'team/reports/WP-000-bundle.yaml'
+    - 'team/session-state/active-handoff.md'
+  last_updated: 'YYYY-MM-DDTHH:MM:SSZ'
+  notes:
+    - 'This is a runner-to-session envelope, not a replacement for backlog or run-state files.'
+    - 'Regenerate this file whenever the runner changes actor, packet, or action.'

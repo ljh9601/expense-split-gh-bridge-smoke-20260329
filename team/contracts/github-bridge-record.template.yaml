@@ -1,0 +1,16 @@
+github_pr_bridge:
+  status: 'not_configured'
+  packet_id: 'WP-000'
+  branch_name: 'packet/wp-000-sample-packet'
+  repository: 'owner/repository'
+  pr_number: ''
+  pr_url: ''
+  author_login: ''
+  reviewer_login: ''
+  last_action: 'none'
+  updated_at: 'YYYY-MM-DDTHH:MM:SSZ'
+  note: 'Split-account GitHub PR publication has not been configured yet.'
+  local_artifacts:
+    pr_body: 'team/pull-requests/WP-000-pr.md'
+    pr_metadata: 'team/pull-requests/WP-000-pr.yaml'
+    review_comment: 'team/pull-requests/WP-000-review-comment.md'

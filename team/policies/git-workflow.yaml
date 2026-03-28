@@ -1,0 +1,50 @@
+repository:
+  naming_rule: 'english-kebab-case'
+  default_branch: 'main'
+  initialize_fresh_git_repo: true
+  remote_strategy: 'no-origin-by-default'
+
+roles:
+  logical_pr_author: 'claude-programmer'
+  logical_final_approver: 'codex'
+  packet_owner: 'claude'
+  merge_owner: 'codex'
+
+naming:
+  packet_branch_pattern: 'packet/<packet-id-lower>-<packet-slug>'
+  repair_strategy: 'reuse-packet-branch-until-merged'
+  pr_title_pattern: '[<packet-id>] <project-name> <phase-label>'
+  language: 'ko-KR'
+
+pull_request:
+  required_sections:
+    - '작업 제목'
+    - '작업 이유'
+    - '작업 목표'
+    - '변경 범위'
+    - '검증 결과'
+    - '위험 및 후속 작업'
+    - '논리적 작성자'
+    - '최종 승인자'
+  local_artifact_directory: 'team/pull-requests'
+  markdown_template_path: 'team/contracts/pull-request.template.md'
+  review_comment_template_path: 'team/contracts/pr-review-comment.template.md'
+
+merge:
+  strategy: 'merge-commit'
+  delete_packet_branch_after_merge: true
+  merge_when:
+    - 'codex_verdict is not pending'
+    - 'packet status is completed'
+    - 'approval pause is cleared'
+
+git:
+  automation_commit_author_name: 'agentic-local-bot'
+  automation_commit_author_email: 'agentic-local@example.invalid'
+  ignore_from_history:
+    - 'team/run-state/launches/'
+    - 'team/run-state/services/'
+    - 'team/run-state/runner-audit.jsonl'
+    - 'team/policies/runner-env.local'
+    - 'team/policies/github-author.env.local'
+    - 'team/policies/github-reviewer.env.local'

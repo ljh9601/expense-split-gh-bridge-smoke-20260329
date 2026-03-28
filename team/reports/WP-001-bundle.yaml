@@ -1,0 +1,22 @@
+bundle:
+  packet_id: 'WP-001'
+  run_id: 'RUN-000'
+  owner: 'claude'
+  status: 'queued'
+  phase: 'intake'
+  updated_at: 'YYYY-MM-DDTHH:MM:SSZ'
+  paths:
+    research_note: 'team/reports/WP-001-research.md'
+    design_brief: 'team/reports/WP-001-design.md'
+    verification_report: 'team/reports/WP-001-verification.md'
+    review_report: 'team/reports/WP-001-review.md'
+    security_review: ''
+    performance_note: ''
+    ui_spec: ''
+    docs_delta: ''
+  handoff:
+    next_gate: 'ready-for-codex-review'
+    reviewer: 'codex'
+    verdict: 'pending'
+  notes:
+    - 'Fill paths as reports are produced during the cycle.'

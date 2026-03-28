@@ -1,0 +1,83 @@
+meta:
+  last_updated: 'YYYY-MM-DD'
+  current_objective: 'Friends often need to split meal or trip expenses, but the settlement math is commonly entered incorrectly by hand. Primary goal: Calculate settlement results from a total set of participant payments. Milestone focus: security-sensitive flow.'
+  current_phase: 'intake'
+  active_work_packet: 'WP-001'
+
+milestones:
+  - id: 'M1'
+    title: 'milestone 1: security-sensitive flow'
+    status: 'in_progress'
+    success_criteria:
+      - 'Initial research, design, implementation, verification, and review packets are seeded from the brief.'
+      - 'Backlog, project facts, and architecture files reflect the source brief.'
+      - 'Report bundles and run-state files are ready before the first execution cycle starts.'
+      - 'Codex and Claude can continue from repo files alone.'
+
+queue:
+  - id: 'WP-001'
+    title: 'Research security-sensitive flow references and constraints'
+    status: 'ready'
+    phase: 'intake'
+    owner: 'codex'
+    next_gate: 'ready-for-kickoff'
+    depends_on: []
+    artifacts:
+      - 'team/contracts/research-note.template.md'
+      - 'team/memory/project-facts.md'
+    notes: 'Collect domain references, operator assumptions, and open questions for security-sensitive flow before design begins.'
+  - id: 'WP-002'
+    title: 'Design the security-sensitive flow architecture and milestone contract'
+    status: 'pending'
+    phase: 'architecture'
+    owner: 'codex'
+    next_gate: 'blocked-on-dependencies'
+    depends_on:
+      - 'WP-001'
+    artifacts:
+      - 'docs/architecture.md'
+      - 'team/contracts/design-brief.template.md'
+      - 'docs/security.md'
+    notes: 'Turn the brief into a bounded design for security-sensitive flow, aimed first at: Calculate settlement results from a total set of participant payments.'
+  - id: 'WP-003'
+    title: 'Implement the security-sensitive flow slice'
+    status: 'pending'
+    phase: 'implementation'
+    owner: 'codex'
+    next_gate: 'blocked-on-dependencies'
+    depends_on:
+      - 'WP-002'
+    artifacts:
+      - 'README.md'
+      - 'docs/security.md'
+    notes: 'Build the smallest end-to-end slice for security-sensitive flow without violating the stated constraints or non-goals.'
+  - id: 'WP-004'
+    title: 'Verify security-sensitive flow behavior and operator readiness'
+    status: 'pending'
+    phase: 'verification'
+    owner: 'codex'
+    next_gate: 'blocked-on-dependencies'
+    depends_on:
+      - 'WP-003'
+    artifacts:
+      - 'team/contracts/report-bundle.template.yaml'
+      - 'team/contracts/verification-report.template.md'
+      - 'team/contracts/security-review.template.md'
+      - 'team/contracts/performance-note.template.md'
+      - 'team/run-state/active-run.yaml'
+    notes: 'Run targeted verification across correctness, safety, performance, and UX for the security-sensitive flow slice.'
+  - id: 'WP-005'
+    title: 'Review the security-sensitive flow milestone and prepare the next handoff'
+    status: 'pending'
+    phase: 'review'
+    owner: 'codex'
+    next_gate: 'blocked-on-dependencies'
+    depends_on:
+      - 'WP-004'
+    artifacts:
+      - 'team/contracts/review-report.template.md'
+      - 'team/contracts/run-ledger-entry.template.yaml'
+      - 'team/run-state/run-ledger.jsonl'
+      - 'team/session-state/active-handoff.md'
+      - 'docs/09-work-log.md'
+    notes: 'Produce a review-ready summary, resolve findings, and queue the next work packet set after the security-sensitive flow slice.'

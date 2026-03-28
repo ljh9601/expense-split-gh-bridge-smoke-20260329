@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(cd "$(dirname "$0")/.." && pwd)"
+source_dir="$repo_root/codex/skills"
+target_dir="${CODEX_HOME:-$HOME/.codex}/skills"
+manifest_path="$target_dir/.agentic-team-template-manifest"
+
+mkdir -p "$target_dir"
+
+if [ -f "$manifest_path" ]; then
+  while IFS= read -r previous_skill; do
+    [ -n "$previous_skill" ] || continue
+    rm -rf "$target_dir/$previous_skill"
+  done < "$manifest_path"
+fi
+
+: > "$manifest_path"
+
+for skill_dir in "$source_dir"/*; do
+  [ -d "$skill_dir" ] || continue
+  skill_name="$(basename "$skill_dir")"
+  rm -rf "$target_dir/$skill_name"
+  cp -R "$skill_dir" "$target_dir/$skill_name"
+  printf '%s\n' "$skill_name" >> "$manifest_path"
+done
+
+printf 'Installed Codex skills into %s\n' "$target_dir"

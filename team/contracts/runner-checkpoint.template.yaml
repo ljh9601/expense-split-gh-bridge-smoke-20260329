@@ -1,0 +1,16 @@
+checkpoint:
+  runner_id: 'runner-local-01'
+  status: 'idle'
+  active_packet_id: 'WP-000'
+  active_run_id: 'RUN-000'
+  phase: 'architecture'
+  next_action: 'inspect_repo_state'
+  next_gate: 'ready-for-kickoff'
+  target_actor: 'codex'
+  awaiting_approval: false
+  approval_reason: ''
+  resume_file: 'team/session-state/runner-resume.yaml'
+  last_updated: 'YYYY-MM-DDTHH:MM:SSZ'
+  notes:
+    - 'Treat backlog, active-run, and run-ledger files as the source of truth.'
+    - 'Use this file for runner-owned pause, approval, and resume state only.'

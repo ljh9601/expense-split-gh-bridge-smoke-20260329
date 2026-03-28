@@ -1,0 +1,22 @@
+run:
+  run_id: 'RUN-000'
+  packet_id: 'WP-000'
+  attempt: 1
+  status: 'queued'
+  phase: 'implementation'
+  triggered_by: 'codex'
+  started_at: 'YYYY-MM-DDTHH:MM:SSZ'
+  updated_at: 'YYYY-MM-DDTHH:MM:SSZ'
+  ended_at: ''
+  report_bundle_path: 'team/reports/WP-000-bundle.yaml'
+  active_handoff_path: 'team/session-state/active-handoff.md'
+  outputs:
+    verification_report: 'team/reports/WP-000-verification.md'
+    review_report: 'team/reports/WP-000-review.md'
+  outcome:
+    next_gate: 'ready-for-codex-review'
+    codex_verdict: 'pending'
+    retry_of_run_id: ''
+    superseded_by_run_id: ''
+  notes:
+    - 'Append one JSON object per run attempt into team/run-state/run-ledger.jsonl using this schema.'

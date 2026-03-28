@@ -1,0 +1,18 @@
+bridge:
+  status: 'not_started'
+  dispatch_state: 'not_started'
+  launch_mode: 'none'
+  target_actor: 'codex'
+  packet_id: 'WP-001'
+  run_id: 'RUN-000'
+  resume_action: 'inspect_repo_state'
+  pid: ''
+  return_code: ''
+  log_path: ''
+  error: ''
+  command: []
+  bootstrap_files: []
+  last_updated: 'YYYY-MM-DDTHH:MM:SSZ'
+  notes:
+    - 'No outer-runner launch attempt has been recorded yet.'
+    - 'Populate this file through runner-bridge-once when a launch-ready dispatch spec exists.'

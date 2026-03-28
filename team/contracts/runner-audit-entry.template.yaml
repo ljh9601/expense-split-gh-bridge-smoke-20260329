@@ -1,0 +1,20 @@
+event:
+  occurred_at: 'YYYY-MM-DDTHH:MM:SSZ'
+  category: 'runner'
+  action: 'runner_dispatch_once'
+  packet_id: 'WP-000'
+  run_id: 'RUN-000'
+  phase: 'implementation'
+  actor: 'codex'
+  result_state: 'launch_ready'
+  reason: 'Summarize why this event occurred.'
+  written_files:
+    - 'team/run-state/runner-checkpoint.yaml'
+    - 'team/session-state/runner-resume.yaml'
+  details:
+    launch_required: true
+    launch_ready: true
+    driver_state: 'handoff_required'
+  notes:
+    - 'Append one JSON object per runner-facing event into team/run-state/runner-audit.jsonl using this shape.'
+    - 'Treat this file as runner-owned support history, not packet truth.'

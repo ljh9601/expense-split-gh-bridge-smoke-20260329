@@ -1,0 +1,12 @@
+github_pr_bridge:
+  status: 'not_configured'
+  packet_id: ''
+  branch_name: ''
+  repository: ''
+  pr_number: ''
+  pr_url: ''
+  author_login: ''
+  reviewer_login: ''
+  last_action: 'none'
+  updated_at: 'YYYY-MM-DDTHH:MM:SSZ'
+  note: 'No GitHub PR bridge action has been recorded yet.'

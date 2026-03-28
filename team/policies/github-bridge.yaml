@@ -1,0 +1,11 @@
+github_bridge:
+  enabled: false
+  repository: ''
+  remote_name: 'origin'
+  base_branch: 'main'
+  require_distinct_accounts: true
+  author_env_file: '~/.config/agent-bootstrap/github-author.env'
+  reviewer_env_file: '~/.config/agent-bootstrap/github-reviewer.env'
+  merge_method: 'merge'
+  delete_branch_after_merge: true
+  auto_publish_completed_packets: true

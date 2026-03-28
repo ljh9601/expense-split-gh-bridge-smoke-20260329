@@ -1,0 +1,26 @@
+allowed_without_human:
+  - repo_local_read_search
+  - repo_local_edit
+  - formatters
+  - lint
+  - typecheck
+  - unit_tests
+  - integration_tests
+  - non_destructive_git_status_diff_add_commit
+  - brief_parsing
+  - target_state_file_generation
+
+require_human_approval:
+  - destructive_file_operations
+  - production_side_effects
+  - paid_resource_usage
+  - new_external_authentication
+  - secret_creation_or_rotation
+  - deployment
+  - schema_or_data_migration_in_live_environment
+  - network_backed_runner_integration
+  - writes_outside_explicit_target_root
+
+notes:
+  - v1 allows local planning and repo-state generation only.
+  - Any future Codex-Claude runner that invokes external services should stay gated until explicit policy is added.

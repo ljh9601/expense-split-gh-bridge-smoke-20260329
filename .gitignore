@@ -1,0 +1,11 @@
+.DS_Store
+.pytest_cache/
+__pycache__/
+*.pyc
+.claude/skills/
+.claude/settings.local.json
+team/policies/runner-env.local
+team/policies/github-author.env.local
+team/policies/github-reviewer.env.local
+team/run-state/launches/*.log
+team/run-state/services/logs/

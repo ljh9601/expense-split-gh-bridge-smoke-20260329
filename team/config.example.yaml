@@ -1,0 +1,195 @@
+project:
+  name: example-project
+  summary: >
+    Replace with a short project summary, system boundary, and non-goals.
+  primary_languages:
+    - typescript
+    - python
+  domains:
+    - backend
+    - frontend
+
+docs:
+  required_read_order:
+    - README.md
+    - AGENTS.md
+    - CLAUDE.md
+    - team/config.yaml
+    - team/backlog/active.yaml
+    - team/memory/project-facts.md
+    - team/policies/git-workflow.yaml
+    - team/policies/github-bridge.yaml
+    - team/run-state/active-run.yaml
+    - team/run-state/github-pr-bridge.yaml
+    - team/session-state/active-handoff.md
+    - docs/architecture.md
+    - docs/14-git-pr-workflow.md
+    - docs/security.md
+    - docs/runbook.md
+    - docs/09-work-log.md
+
+commands:
+  install: npm install
+  runtime_setup: ""
+  quality_gate_runner: ./scripts/run-quality-gates.sh all
+  review_hygiene: ./scripts/run-quality-gates.sh review_hygiene
+  lint: npm run lint
+  typecheck: npm run typecheck
+  unit_test: npm test
+  integration_test: npm run test:integration
+  e2e_test: npm run test:e2e
+  perf_smoke: npm run perf
+  review_cmd: ""
+  security_smoke: npm audit --production
+
+paths:
+  hub_files:
+    - src/app.ts
+    - src/server.ts
+  sensitive_paths:
+    - .env
+    - infra/
+    - migrations/
+    - auth/
+
+coordination:
+  control_plane_owner: codex
+  execution_plane_owner: claude
+  design_review_round_limit: 3
+  mandatory_state_files:
+    - team/backlog/active.yaml
+    - team/session-state/active-handoff.md
+    - team/memory/project-facts.md
+    - team/memory/decisions.jsonl
+    - team/run-state/active-run.yaml
+    - team/run-state/run-ledger.jsonl
+  mandatory_contract_templates:
+    - team/contracts/work-packet.template.yaml
+    - team/contracts/design-brief.template.md
+    - team/contracts/verification-report.template.md
+    - team/contracts/review-report.template.md
+    - team/contracts/report-bundle.template.yaml
+    - team/contracts/run-ledger-entry.template.yaml
+    - team/contracts/pull-request.template.md
+    - team/contracts/pr-review-comment.template.md
+    - team/contracts/github-bridge-record.template.yaml
+  supporting_contract_templates:
+    - team/contracts/research-note.template.md
+    - team/contracts/security-review.template.md
+    - team/contracts/performance-note.template.md
+    - team/contracts/ui-spec.template.md
+    - team/contracts/docs-delta.template.md
+
+workflow:
+  default_phase_order:
+    - intake
+    - architecture
+    - planning
+    - implementation
+    - verification
+    - review
+    - approval
+  claude_execution_order:
+    - research
+    - scope
+    - design
+    - implement
+    - security_perf_ux
+    - review
+  codex_approval_required_for:
+    - architecture signoff
+    - scope changes
+    - milestone closeout
+
+autonomy:
+  default_parallelism: 3
+  next_step_selection: codex_owns_default_queue
+  clarification_policy: ask_only_when_wrong_guess_is_expensive_or_unsafe
+  shell_command_policy: preapproved_for_local_repo_work_except_destructive_or_externally_privileged_actions
+  auto_approval_policy_file: team/policies/auto-approval.yaml
+  commit_policy: commit_each_meaningful_work_unit
+  interrupt_human_only_for:
+    - destructive_action
+    - new_external_authentication
+    - production_or_paid_side_effect
+    - legal_or_compliance_ambiguity
+    - repeated_unsafe_failure
+  review_required: true
+  docs_update_required_on_behavior_change: true
+  repair_loops_before_escalation: 2
+  security_review_required_when:
+    - auth
+    - secrets
+    - payment
+    - user_input
+    - external_api
+    - filesystem
+  performance_review_required_when:
+    - hot_path
+    - query_fanout
+    - render_loop
+    - background_job
+
+session_continuity:
+  enabled: true
+  backlog_file: team/backlog/active.yaml
+  project_facts_file: team/memory/project-facts.md
+  decision_log_file: team/memory/decisions.jsonl
+  work_log_file: docs/09-work-log.md
+  active_handoff_file: team/session-state/active-handoff.md
+  resume_prompt_file: team/session-state/next-session-prompt.md
+  latest_work_log_entries_to_read: 10
+  refresh_handoff_when:
+    - before an intentional session reset
+    - after a meaningful repair loop
+    - before starting another broad implementation or review batch
+  handoff_sections_required:
+    - objective
+    - current_phase
+    - active_work_packet
+    - next_gate
+    - completed_work
+    - pending_next_actions
+    - changed_files
+    - validation_status
+    - open_risks
+    - delegation_status
+
+git_workflow:
+  enabled: true
+  default_branch: main
+  packet_branch_prefix: packet
+  logical_pr_author: claude-programmer
+  final_pr_approver: codex
+  local_pr_directory: team/pull-requests
+  workflow_doc: docs/14-git-pr-workflow.md
+  policy_file: team/policies/git-workflow.yaml
+  pull_request_template: team/contracts/pull-request.template.md
+  review_comment_template: team/contracts/pr-review-comment.template.md
+  publish_to_github_when:
+    - optional GitHub bridge is configured
+    - network-backed publication is allowed by policy
+
+github_pr_bridge:
+  policy_file: team/policies/github-bridge.yaml
+  state_file: team/run-state/github-pr-bridge.yaml
+  author_env_file: team/policies/github-author.env.local
+  reviewer_env_file: team/policies/github-reviewer.env.local
+  machine_global_author_env_file: ~/.config/agent-bootstrap/github-author.env
+  machine_global_reviewer_env_file: ~/.config/agent-bootstrap/github-reviewer.env
+  service_author_token_env: ABI_GITHUB_AUTHOR_TOKEN
+  service_reviewer_token_env: ABI_GITHUB_REVIEWER_TOKEN
+  service_author_env_file_env: ABI_GITHUB_AUTHOR_ENV_FILE
+  service_reviewer_env_file_env: ABI_GITHUB_REVIEWER_ENV_FILE
+  distinct_accounts_required: true
+  default_auto_publish_completed_packets: true
+
+definition_of_done:
+  - active work packet updated coherently
+  - code or configuration updated coherently
+  - targeted validation run
+  - verification and review reports produced or linked
+  - findings from review resolved or documented
+  - docs or runbooks updated when behavior changed
+  - work log and handoff updated for meaningful work
+  - residual risks summarized

@@ -1,0 +1,66 @@
+packet:
+  id: 'WP-000'
+  title: 'replace with a bounded task title'
+  status: 'draft'
+  phase: 'architecture'
+  issued_by: 'codex'
+  executed_by: 'claude'
+  created_at: 'YYYY-MM-DD'
+  updated_at: 'YYYY-MM-DD'
+  depends_on: []
+
+objective:
+  summary: 'What should be true when this packet is complete?'
+  why_now: 'Why this packet is the next highest-value step.'
+
+scope:
+  in_scope:
+    - 'Specific change or outcome.'
+  out_of_scope:
+    - 'What this packet must not expand into.'
+
+ownership:
+  files:
+    - 'List exact files or directories if known.'
+  surfaces:
+    - 'CLI, API, UI, docs, infra, tests, or another bounded surface.'
+
+required_artifacts:
+  - 'report bundle'
+  - 'design brief'
+  - 'verification report'
+  - 'review report'
+  - 'pull request draft'
+
+optional_artifacts:
+  - 'research note'
+  - 'security review note'
+  - 'performance note'
+  - 'ui spec'
+  - 'docs delta note'
+
+validation:
+  commands:
+    - 'Exact commands to run.'
+  checks:
+    - 'Behavior or evidence that must be confirmed.'
+
+acceptance_criteria:
+  - 'Concrete observable outcome.'
+  - 'Another observable outcome.'
+
+handoff:
+  next_gate: 'ready-for-codex-review'
+  codex_review_required: true
+  report_bundle_path: 'team/reports/WP-000-bundle.yaml'
+  active_run_state_path: 'team/run-state/active-run.yaml'
+  run_ledger_path: 'team/run-state/run-ledger.jsonl'
+  report_paths:
+    - 'team/reports/WP-000-bundle.yaml'
+    - 'team/reports/WP-000-verification.md'
+    - 'team/reports/WP-000-review.md'
+    - 'team/pull-requests/WP-000-pr.md'
+    - 'team/pull-requests/WP-000-review-comment.md'
+
+notes:
+  - 'Optional notes, assumptions, or repo-specific constraints.'
